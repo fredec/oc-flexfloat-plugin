@@ -1,0 +1,27 @@
+plugin:
+    name: 'diveramkt.floatingbanner::lang.plugin.name'
+    description: 'diveramkt.floatingbanner::lang.plugin.description'
+    author: DiveraMkt
+    icon: oc-icon-flag
+    homepage: ''
+permissions:
+    manage_popup:
+        tab: 'diveramkt.floatingbanner::lang.plugin.name'
+        label: 'diveramkt.floatingbanner::lang.floatingbanner.manager_popup'
+    manage_exitpopup:
+        tab: 'diveramkt.floatingbanner::lang.plugin.name'
+        label: 'diveramkt.floatingbanner::lang.floatingbanner.manager_exitpopup'
+navigation:
+    main-menu-floatingbanners:
+        label: 'diveramkt.floatingbanner::lang.floatingbanner.floatingbanner'
+        url: diveramkt/floatingbanner/popups/update/1
+        icon: icon-flag
+        sideMenu:
+            side-menu-popup:
+                label: 'diveramkt.floatingbanner::lang.floatingbanner.popup'
+                url: diveramkt/floatingbanner/popups/update/1
+                icon: icon-image
+            side-menu-exitpopup:
+                label: 'diveramkt.floatingbanner::lang.floatingbanner.exitpopup'
+                url: diveramkt/floatingbanner/exitpopups/update/1
+                icon: icon-sign-out
