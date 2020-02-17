@@ -14,14 +14,20 @@ permissions:
 navigation:
     main-menu-floatingbanners:
         label: 'diveramkt.floatingbanner::lang.floatingbanner.floatingbanner'
-        url: diveramkt/floatingbanner/popups/update/1
+        url: diveramkt/floatingbanner/popups
         icon: icon-flag
+        permissions:
+                    - manage_popup
         sideMenu:
             side-menu-popup:
                 label: 'diveramkt.floatingbanner::lang.floatingbanner.popup'
-                url: diveramkt/floatingbanner/popups/update/1
+                url: diveramkt/floatingbanner/popups
                 icon: icon-image
+                permissions:
+                    - manage_popup
             side-menu-exitpopup:
                 label: 'diveramkt.floatingbanner::lang.floatingbanner.exitpopup'
                 url: diveramkt/floatingbanner/exitpopups/update/1
                 icon: icon-sign-out
+                permissions:
+                    - manage_exitpopup
