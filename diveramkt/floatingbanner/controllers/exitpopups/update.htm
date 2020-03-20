@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('diveramkt/floatingbanner/exitpopups') ?>">ExitPopups</a></li>
+        <!-- <li><a href="<?= Backend::url('diveramkt/floatingbanner/exitpopups') ?>">ExitPopups</a></li> -->
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -24,7 +24,7 @@
                     class="btn btn-primary">
                     <?= e(trans('backend::lang.form.save')) ?>
                 </button>
-                <button
+                <!-- <button
                     type="button"
                     data-request="onSave"
                     data-request-data="close:1"
@@ -43,7 +43,7 @@
 
                 <span class="btn-text">
                     <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('diveramkt/floatingbanner/exitpopups') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
-                </span>
+                </span> -->
             </div>
         </div>
     <?= Form::close() ?>

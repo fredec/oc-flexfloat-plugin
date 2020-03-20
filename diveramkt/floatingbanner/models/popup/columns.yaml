@@ -4,8 +4,11 @@ columns:
         type: text
         searchable: true
         sortable: true
-    enabled:
-        label: 'diveramkt.floatingbanner::lang.popup.enabled'
-        type: switch
+    data_entrada:
+        label: 'Data de Entrada'
+        type: datetime
         searchable: true
-        sortable: true
+    data_saida:
+        label: 'Data de saída'
+        type: datetime
+        searchable: true

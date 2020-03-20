@@ -9,3 +9,6 @@
 1.0.4:
     - 'Updated table diveramkt_floatingbanner_exitpopup'
     - builder_table_update_diveramkt_floatingbanner_exitpopup.php
+1.0.5:
+    - 'Updated table diveramkt_floatingbanner_popup'
+    - builder_table_update_diveramkt_floatingbanner_popup.php
