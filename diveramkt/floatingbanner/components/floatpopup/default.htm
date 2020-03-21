@@ -5,9 +5,9 @@
 
 {% if popup.title %}
 	<div id="floatpopup">
-		<a href="{{ popup.link }}" target="{{popup.target}}" title="{{ popup.title }}">
+		{% if popup.link and popup.link != '' %} <a href="{{ popup.link }}" target="{{popup.target}}" title="{{ popup.title }}"> {% endif %}
 			<img src="{{ popup.image|media }}" alt="{{ popup.title }}"/>
-		</a>
+		{% if popup.link and popup.link != '' %} </a> {% endif %}
 	</div>
 
 	<!-- Load Script -->

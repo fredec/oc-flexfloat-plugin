@@ -23,28 +23,41 @@ class FloatPopup extends ComponentBase
 
 	public function onRun(){
 
-		if($_SERVER['REDIRECT_URL'] == '/boletim-especial-2019') return;
-
 		$this->popup = $this->getPopup();
 		if(isset($this->popup[0])) $this->popup=$this->popup[0];
 
+		// $name='banner_float_'.serialize($this->popup->attributes); // $name=preg_replace("/[^a-zA-Z0-9]/", "", $name);
+		$name='banner_popup_diveramkt'.str_replace(array('/','.'), array('-',''), $this->popup->attributes['image']);
 		if(isset($this->popup->attributes) && isset($this->popup->attributes['dias_oculto']) && $this->popup->attributes['dias_oculto'] > 0){
 
-			$name='banner_float_'.serialize($this->popup->attributes);
-			$name= preg_replace("/[^a-zA-Z0-9]/", "", $name);
+			if(Session::get($name)) {
 
-			if (Cache::has($name)) {
-				$veri=Cache::get($name);
-				$this->popup='';
-			}else{
-				Cache::pull($name);
-				$dias=$this->popup->attributes['dias_oculto']*(24*60);
-				Cache::add($name, 'carregado', $dias);
-			}
+				$horas_dia=$this->popup->attributes['dias_oculto']*24;
 
-		}
+				$value = Session::get($name);
+				$veri=$this->horas_datas($value, date('Y-m-d H:i:s'));
+				$horas=$veri->horas;
+				if($horas >= $horas_dia) Session::put($name, date('Y-m-d H:i:s'));
+				else $this->popup='';
 
-		if(isset($this->popup->attributes)){
+			}else Session::put($name, date('Y-m-d H:i:s'));
+
+			// $this->popup->attributes['dias_oculto']
+			// $dias=$this->popup->attributes['dias_oculto']*(24*60);
+			// if (Cache::has($name)) {
+			// 	$veri=Cache::get($name);
+			// 	$this->popup='';
+			// }else{
+			// 	Cache::pull($name);
+			// 	Cache::add($name, 'carregado', $dias);
+			// }
+
+		// }elseif(Cache::has($name)) Cache::forget($name);
+		// }else Cache::forget($name);
+		}else Session::forget($name);
+
+
+		if(isset($this->popup->attributes) && str_replace(' ','',$this->popup->attributes['link']) != ''){
 			$this->popup->attributes['target']='_parent';
 			$url=$this->popup->attributes['link'];
 			if(!strpos("[".$url."]", "http://") && !strpos("[".$url."]", "https://")) $url='http://'.$url;
