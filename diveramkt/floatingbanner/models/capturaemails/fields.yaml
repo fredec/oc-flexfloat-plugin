@@ -1,0 +1,100 @@
+fields:
+    enabled:
+        label: 'diveramkt.floatingbanner::lang.plugin.enabled'
+        span: auto
+        type: switch
+        comment: 'diveramkt.floatingbanner::lang.captaremail.enabled_comment'
+    time_cache:
+        label: 'diveramkt.floatingbanner::lang.captaremail.time_cache'
+        span: auto
+        default: 1
+        type: text
+    tipo:
+        label: 'diveramkt.floatingbanner::lang.captaremail.tipo'
+        options:
+            entrada: 'Ao entrar no site'
+            saida: 'Ao sair do site'
+        span: auto
+        type: dropdown
+    time_aparecer:
+        label: 'diveramkt.floatingbanner::lang.captaremail.time_aparecer'
+        span: auto
+        type: text
+        comment: 'diveramkt.floatingbanner::lang.captaremail.time_aparecer_comment'
+    load_font_awesome:
+        label: 'Load Font Awesome'
+        span: auto
+        type: switch
+        comment: 'Caso não esteja carregado no site'
+tabs:
+    fields:
+        enabled_name:
+            label: 'diveramkt.floatingbanner::lang.captaremail.enabled_name'
+            span: auto
+            type: switch
+            tab: 'diveramkt.floatingbanner::lang.plugin.textos'
+        select_campo:
+            label: 'diveramkt.floatingbanner::lang.captaremail.select_campo'
+            options:
+                email: E-mail
+                telefone: Telefone
+            span: auto
+            type: dropdown
+            tab: 'diveramkt.floatingbanner::lang.plugin.textos'
+        title:
+            label: 'diveramkt.floatingbanner::lang.captaremail.title'
+            span: full
+            type: text
+            tab: 'diveramkt.floatingbanner::lang.plugin.textos'
+        description:
+            label: 'diveramkt.floatingbanner::lang.plugin.description'
+            size: small
+            span: full
+            type: textarea
+            tab: 'diveramkt.floatingbanner::lang.plugin.textos'
+        margin:
+            label: 'Posição do formulário'
+            options:
+                inteiro: Inteiro
+                left: Esqueda
+                right: Direita
+            span: auto
+            type: dropdown
+            tab: 'diveramkt.floatingbanner::lang.plugin.fundo'
+        image_fundo:
+            label: 'diveramkt.floatingbanner::lang.captaremail.image_fundo'
+            mode: image
+            imageWidth: '150'
+            span: right
+            type: mediafinder
+            tab: 'diveramkt.floatingbanner::lang.plugin.fundo'
+        colors:
+            label: Cores
+            prompt: 'Acrescentar novas cores'
+            maxItems: '1'
+            minItems: '1'
+            span: full
+            type: repeater
+            tab: Cores
+            form:
+                fields:
+                    cor_title:
+                        label: 'Cor do título'
+                        span: auto
+                        default: '#000000'
+                        type: colorpicker
+                    cor_fundo:
+                        label: 'diveramkt.floatingbanner::lang.captaremail.color_fundo'
+                        span: auto
+                        default: '#000000'
+                        type: colorpicker
+                    cor_description:
+                        label: 'Cor da descrição'
+                        span: auto
+                        default: '#000000'
+                        type: colorpicker
+                    cor_botoes:
+                        label: 'Cor dos botões'
+                        span: auto
+                        default: '#000000'
+                        type: colorpicker

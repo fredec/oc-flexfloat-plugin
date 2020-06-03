@@ -1,0 +1,153 @@
+{% set popup = __SELF__.capturaemails %}
+
+{% if popup.title %}
+<div id="capturar_emails" style="{{popup.colors.cor_fundo?' background-color: '~popup.colors.cor_fundo~'!important':''}}">
+	<div class="contFomFloating position_{{popup.margin}}">
+
+		<h2 style="{{popup.colors.cor_title?' color: '~popup.colors.cor_title~'!important':''}}" >{{popup.title}}</h2>
+
+		{% if popup.description %}
+		<p style="{{popup.colors.cor_description?' color: '~popup.colors.cor_description~'!important':''}}">{{popup.description}}</p>
+		{% endif %}
+		<form data-request="onSubscriptionFloating" data-request-success="email_cadastrado_floating()">
+
+			{% if popup.enabled_name %}
+			<div class="input_label_float center_label">
+				<input name="name" id="nome_popup_capturar_email" value="" required="required" type="text">
+				<label for="nome_popup_capturar_email">Informe seu nome</label>
+			</div>
+			{% endif %}
+
+			<div class="{{not popup.enabled_name ?' no_name ':''}}">
+				{% if popup.select_campo == 'email' %}
+				<div class="input_label_float center_label">
+					<input name="email" id="email_popup_capturar_email" value="" required="required" type="text">
+					<label for="email_popup_capturar_email">Informe seu email</label>
+				</div>
+				{% else %}
+				<div class="input_label_float center_label">
+					<input name="email" id="email_popup_capturar_telefone" value="" required="required" type="tel">
+					<label for="email_popup_capturar_telefone">Informe seu telefone/whatsapp</label>
+				</div>
+				{% endif %}
+			</div>
+			<div class="{{not popup.enabled_name ?' no_name ':''}}">
+				<div class="div_input_loading_floating">
+					<button type="submit" style="{{popup.colors.cor_botoes?' background-color: '~popup.colors.cor_botoes~'!important':''}}">Cadastrar</button>
+					<span data-attach-loading class=""></span>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+{% put scripts %}
+
+{% if popup.image_fundo or popup.color_fundo or popup.colors.cor_botoes or popup.margin.width %}
+<style>
+
+{% if popup.margin.width %}
+#capturar_emails, #bio_ep{max-width: {{popup.margin.width}}px;}
+{% endif %}
+
+{% if popup.colors.cor_botoes %}
+#capturar_emails .popup_close, #bio_ep_close{
+	background-color: {{popup.colors.cor_botoes}};
+}
+{% endif %}
+{% if popup.color_fundo %}
+#capturar_emails, #bio_ep {
+	background-color: {{popup.color_fundo}}!important;
+}
+{% endif %}
+{% if popup.image_fundo %}
+#capturar_emails, #bio_ep {
+	background-image: url({{popup.image_fundo|media}})!important;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+{% endif %}
+
+</style>
+{% endif %}
+
+{% if popup.tipo == 'entrada' %}
+<!-- Manual: https://dev.vast.com/jquery-popup-overlay/ -->
+<script src="{{ url('/') }}/plugins/diveramkt/floatingbanner/assets/vendor/jquery-popup-overlay/jquery.popupoverlay.js"></script>
+{% else %}
+<!-- Manual: http://beeker.io/exit-intent-popup-script-tutorial -->
+<script src="{{ url('/') }}/plugins/diveramkt/floatingbanner/assets/vendor/beeker.io-exitpopup/bioep.js"></script>
+{% endif %}
+
+<!-- Manual: https://github.com/js-cookie/js-cookie -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script> -->
+
+<script type="text/javascript">
+
+	var inputs_email_floating=document.querySelectorAll('#capturar_emails form input');
+
+	function email_cadastrado_floating(){
+		{% if popup.select_campo == 'email' %}
+		alert('E-mail cadastrado com sucesso.');
+		{% else %}
+		alert('Número cadastrado com sucesso.');
+		{% endif %}
+		if(inputs_email_floating.length){
+			for (input of inputs_email_floating) {
+				input.value='';
+			}
+		}
+		
+		{% if popup.tipo == 'entrada' %}
+		$('#capturar_emails').popup('hide');
+		{% else %}
+		bioEp.hidePopup();
+		{% endif %}
+	}
+
+	$(document).ready(function(){
+
+		{% if popup.tipo == 'entrada' %}
+
+		time_wait_floating=({{popup.time_aparecer}}*1000);
+		setTimeout(function(){
+			$('#capturar_emails').popup({
+				pagecontainer: '#wrapper',
+				autoopen: true,
+				escape: false,
+				closebutton: true,
+				transition: 'all 0.5s',
+				blur: false,
+				scrolllock: true,
+				onclose: function() {
+					$.request('onSessionBanner');
+				}
+			});
+		// Cookies.set('floatpopup', 'popup', { expires: 7 });
+	}, time_wait_floating);
+
+		{% else %}
+
+		bioEp.init({
+			html: $('#capturar_emails').html(),
+			cookieExp: 0,
+			delay: 1,
+			showOnDelay: false,
+			width: 800,
+			height: 600,
+		});
+		$('#bio_ep_close').html('<span>x</span>');
+
+		bioEp.domReady(function(){
+			$('#bio_ep_close').click(function(){
+				$.request('onSessionBanner');
+			})
+		});
+
+		{% endif %}
+
+	});
+</script>
+{% endput %}
+{% endif %}

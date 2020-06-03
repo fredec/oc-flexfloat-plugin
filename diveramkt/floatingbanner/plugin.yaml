@@ -11,13 +11,16 @@ permissions:
     manage_exitpopup:
         tab: 'diveramkt.floatingbanner::lang.plugin.name'
         label: 'diveramkt.floatingbanner::lang.floatingbanner.manager_exitpopup'
+    manage_popcaptura:
+        tab: 'diveramkt.floatingbanner::lang.plugin.name'
+        label: 'diveramkt.floatingbanner::lang.captaremail.manager_popcaptura'
 navigation:
     main-menu-floatingbanners:
         label: 'diveramkt.floatingbanner::lang.floatingbanner.floatingbanner'
         url: diveramkt/floatingbanner/popups
         icon: icon-flag
         permissions:
-                    - manage_popup
+            - manage_popup
         sideMenu:
             side-menu-popup:
                 label: 'diveramkt.floatingbanner::lang.floatingbanner.popup'
@@ -31,3 +34,7 @@ navigation:
                 icon: icon-sign-out
                 permissions:
                     - manage_exitpopup
+            side-menu-capturaemail:
+                label: 'diveramkt.floatingbanner::lang.captaremail.popcaptura'
+                url: diveramkt/floatingbanner/capturaemails/update/1
+                icon: icon-envelope-square

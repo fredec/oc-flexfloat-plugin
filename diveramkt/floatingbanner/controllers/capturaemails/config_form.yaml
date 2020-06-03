@@ -1,0 +1,10 @@
+name: CapturaEmails
+form: $/diveramkt/floatingbanner/models/capturaemails/fields.yaml
+modelClass: Diveramkt\Floatingbanner\Models\CapturaEmails
+defaultRedirect: diveramkt/floatingbanner/capturaemails
+create:
+    redirect: 'diveramkt/floatingbanner/capturaemails/update/:id'
+    redirectClose: diveramkt/floatingbanner/capturaemails
+update:
+    redirect: diveramkt/floatingbanner/capturaemails
+    redirectClose: diveramkt/floatingbanner/capturaemails

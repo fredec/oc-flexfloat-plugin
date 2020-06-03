@@ -12,3 +12,6 @@
 1.0.5:
     - 'Updated table diveramkt_floatingbanner_popup'
     - builder_table_update_diveramkt_floatingbanner_popup.php
+1.0.6:
+    - 'Created table diveramkt_floatingbanner_captura_emails'
+    - builder_table_create_diveramkt_floatingbanner_captura_emails.php

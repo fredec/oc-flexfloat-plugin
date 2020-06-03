@@ -1,0 +1,9 @@
+columns:
+    title:
+        label: Título
+        type: text
+        searchable: true
+    description:
+        label: Descrição
+        type: text
+        searchable: true

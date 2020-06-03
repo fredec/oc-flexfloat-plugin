@@ -44,8 +44,9 @@ class ExitFloatPopup extends ComponentBase
 		}
 	}
 
-	protected function getExitPopup(){
-		return ExitPopup::first();
+	// protected function getExitPopup(){
+	public function getExitPopup(){
+		return ExitPopup::where('enabled',1)->first();
 	}
 
 	public $exitpopup;

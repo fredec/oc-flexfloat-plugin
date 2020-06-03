@@ -1,0 +1,4 @@
+title: CapturaEmails
+modelClass: Diveramkt\Floatingbanner\Models\CapturaEmails
+toolbar:
+    buttons: reorder_toolbar

@@ -15,11 +15,13 @@ fields:
         mode: datetime
         span: left
         type: datepicker
+        ignoreTimezone: true
     data_saida:
         label: 'Data de Saída'
         mode: datetime
         span: left
         type: datepicker
+        ignoreTimezone: true
     link:
         label: 'diveramkt.floatingbanner::lang.popup.link'
         span: left

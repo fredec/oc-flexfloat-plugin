@@ -2,15 +2,20 @@
 
 {% if exitpopup.enabled %}
 
-<!--
-	<div id="bio_ep_bg"></div>
-	<div id="bio_ep">
-	    <div id="bio_ep_close">X</div>
-	    <a href="{{ exitpopup.link }}" title="{{ exitpopup.title }}">
-			<img src="{{ exitpopup.image|media }}" alt="{{ exitpopup.title }}"/>
-		</a>
-	</div>
--->
+<div id="bio_ep_bg"></div>
+<div id="bio_ep">
+	<div id="bio_ep_close">X</div>
+	{% if exitpopup.link %} <a href="{{ exitpopup.link|prep_url }}" {{ exitpopup.link|target }} title="{{ exitpopup.title }}"> {% endif %}
+		<img src="{{ exitpopup.image|media }}" alt="{{ exitpopup.title }}"/>
+	{% if exitpopup.link %} </a> {% endif %}
+</div>
+
+<style type="text/css">
+#bio_ep_bg {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.3; z-index: 10001;}
+#bio_ep {display: none; position: fixed; width: 100px; height: 100px; font-family: 'Titillium Web', sans-serif; font-size: 16px; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); -webkit-transform: translateX(-50%) translateY(-50%); -ms-transform: translateX(-50%) translateY(-50%); background-color: #fff; box-shadow: 0px 1px 4px 0 rgba(0,0,0,0.5); z-index: 10002;}
+#bio_ep_close {position: absolute; left: 100%; margin: -8px 0 0 -12px; width: 20px; height: 20px; color: #fff; font-size: 12px; font-weight: bold; text-align: center; border-radius: 50%; background-color: #5c5c5c; cursor: pointer;}
+</style>
+
 
 <!-- Load Script -->
 {% put scripts %}
@@ -21,7 +26,7 @@
 {% if exitpopup.link %} {% set html_popexit=html_popexit~'</a>' %} {% endif %}
 
 <!-- Manual: http://beeker.io/exit-intent-popup-script-tutorial -->
-<script src="{{ url('/') }}/plugins/diveramkt/floatingbanner/assets/vendor/beeker.io-exitpopup/bioep.min.js"></script>
+<script src="{{ url('/') }}/plugins/diveramkt/floatingbanner/assets/vendor/beeker.io-exitpopup/bioep.js"></script>
 
 <script type="text/javascript">
 	if( navigator.userAgent.match(/Android/i)
@@ -46,6 +51,7 @@
 	bioEp.init({
 		html: '{{html_popexit|raw}}',
 		cookieExp: 1,
+		// cookieExp: 0,
 		delay: 1,
 		showOnDelay: false,
 		width: 800,
@@ -70,6 +76,7 @@
 	height: 25px!important;
 	line-height: 21px;
 	overflow: hidden;
+	cursor: pointer;
 	/*font: normal normal normal 14px/1 FontAwesome;*/
 }
 /*#bio_ep_close:before{content: "\f00d";float: left;margin-top: 4px;margin-left: 6px;margin-bottom: 10px;}*/
