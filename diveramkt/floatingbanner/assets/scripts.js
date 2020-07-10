@@ -45,3 +45,15 @@
 		};
 
 	}
+
+	window.onload = function(){
+
+		if(document.querySelectorAll('.input_label_float label').length > 0){
+			for (cur of document.querySelectorAll('.input_label_float label')) {
+				cur.onclick = function(){
+					this.closest('.input_label_float').querySelector('#'+this.getAttribute('for')).focus();
+				}
+			}
+		}
+
+	}

@@ -108,7 +108,9 @@ class CapturaEmailTel extends ComponentBase
 
 	public function onRun(){
 		$class=get_declared_classes();
-		if(!in_array('Indikator\News\Plugin', $class) or !in_array('Indikator\News\Components\Subscribe', $class)) return;
+
+		 // or !in_array('Indikator\News\Controllers\Subscribers', $class)
+		if(!in_array('Indikator\News\Plugin', $class)) return;
 		
 		$this->capturaemails = $this->getCapturaEmails();
 		if(!isset($this->capturaemails->id) or !$this->capturaemails->id) return;
@@ -138,15 +140,17 @@ class CapturaEmailTel extends ComponentBase
 			$value = Session::get($name);
 			$veri=$this->horas_datas($value, date('Y-m-d H:i:s'));
 			$horas=$veri->horas;
+
 			if($horas >= $horas_dia){
 				Session::forget($name);
 				// Session::put($name, date('Y-m-d H:i:s'));
 				// Session::put($name.'_quant', $this->capturaemails->time_cache);
 			}else return;
+			
 		}
 
-		$this->addCss('/plugins/diveramkt/floatingbanner/assets/style.css');
-		$this->addJs('/plugins/diveramkt/floatingbanner/assets/scripts.js');
+		$this->addCss('/plugins/diveramkt/floatingbanner/assets/style.css?atualizado');
+		$this->addJs('/plugins/diveramkt/floatingbanner/assets/scripts.js?atualizado');
 
 		if($this->capturaemails->load_font_awesome) $this->addCss('/plugins/diveramkt/floatingbanner/assets/css/font-awesome.min.css');
 
@@ -231,7 +235,7 @@ class CapturaEmailTel extends ComponentBase
 			$subscriber = Subscribers::create([
 				'name'          => $name,
 				'email'         => $email,
-				'common'        => '',
+				// 'common'        => '',
 				'locale'        => App::getLocale(),
 				'created'       => 2,
 				'statistics'    => 0,

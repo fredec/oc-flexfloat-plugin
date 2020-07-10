@@ -41,6 +41,7 @@
 		</form>
 	</div>
 </div>
+
 {% put scripts %}
 
 {% if popup.image_fundo or popup.color_fundo or popup.colors.cor_botoes or popup.margin.width %}
@@ -142,6 +143,11 @@
 		bioEp.domReady(function(){
 			$('#bio_ep_close').click(function(){
 				$.request('onSessionBanner');
+
+				// $.request('__SELF__::onSessionBanner', {
+					// 'update': {'cart-items': '.cart-item-wrapper'}
+				// });
+
 			})
 		});
 

@@ -1,6 +1,6 @@
 {% set exitpopup = __SELF__.exitpopup %}
 
-{% if exitpopup.enabled %}
+{% if exitpopup.enabled and not __SELF__.exitpopup_session %}
 
 <div id="bio_ep_bg"></div>
 <div id="bio_ep">
@@ -50,8 +50,8 @@
 
 	bioEp.init({
 		html: '{{html_popexit|raw}}',
-		cookieExp: 1,
-		// cookieExp: 0,
+		// cookieExp: 1,
+		cookieExp: 0,
 		delay: 1,
 		showOnDelay: false,
 		width: 800,

@@ -1,5 +1,5 @@
 .input_label_float{position: relative;width: 100%;display: block;float: left;}
-.input_label_float input{
+.input_label_float input, .input_label_float label{
 	position: relative;
 	margin: 0;
 	width: 100%;
@@ -51,7 +51,7 @@
 	position: absolute;
 	top: 50%;
 	right: 6px;
-	margin-top: -6px;
+	margin-top: -8px;
 }
 /*.div_input_loading_floating .oc-loading, .loading_select .oc-loading{margin-top: 0;}*/
 
@@ -107,7 +107,7 @@
 
 .contFomFloating label{text-align: left;color: #999999;}
 .contFomFloating p{color: black;text-align: center;font-size: 16px;}
-.contFomFloating h2{line-height: 40px;font-size: 350%;color: black;text-align: center;text-transform: initial;}
+.contFomFloating h2{line-height: 40px;font-size: 350%;color: black;text-align: center;text-transform: initial;margin-bottom: 20px;}
 
 #capturar_emails_wrapper img{position: relative;max-height: 100%;max-width: 100%;}
 .floatpopup a{float: left;}

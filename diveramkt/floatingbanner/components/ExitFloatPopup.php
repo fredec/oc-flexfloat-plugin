@@ -3,6 +3,7 @@
 use Cms\Classes\ComponentBase;
 
 use Diveramkt\FloatingBanner\Models\ExitPopup;
+use session;
 
 class ExitFloatPopup extends ComponentBase
 {
@@ -42,6 +43,19 @@ class ExitFloatPopup extends ComponentBase
 			$valores['target']='_parent'; if(!strpos("[".$valores['link']."]", $_SERVER['HTTP_HOST'])) $valores['target']='_blank';
 			$this->exitpopup->attributes=$valores;
 		}
+
+		$name='popup_diveramkt_exit_float_popup';
+		$this->exitpopup_session=1;
+		if(!Session::has($name)) {
+			// Session::put($name, date('Y-m-d H:i:s'));
+			Session::put($name, date('Y-m-d'));
+			$this->exitpopup_session=0;
+		}else{
+			if(Session::get($name) != date('Y-m-d')){
+				$this->exitpopup_session=0;
+				Session::put($name, date('Y-m-d'));
+			}
+		}
 	}
 
 	// protected function getExitPopup(){
@@ -50,4 +64,5 @@ class ExitFloatPopup extends ComponentBase
 	}
 
 	public $exitpopup;
+	public $exitpopup_session;
 }
