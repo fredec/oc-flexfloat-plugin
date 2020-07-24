@@ -109,6 +109,7 @@ class CapturaEmailTel extends ComponentBase
 	public function onRun(){
 		$class=get_declared_classes();
 
+
 		 // or !in_array('Indikator\News\Controllers\Subscribers', $class)
 		if(!in_array('Indikator\News\Plugin', $class)) return;
 		
@@ -150,7 +151,7 @@ class CapturaEmailTel extends ComponentBase
 		}
 
 		$this->addCss('/plugins/diveramkt/floatingbanner/assets/style.css?atualizado');
-		$this->addJs('/plugins/diveramkt/floatingbanner/assets/scripts.js?atualizado');
+		$this->addJs('/plugins/diveramkt/floatingbanner/assets/scripts.js?atualizado1');
 
 		if($this->capturaemails->load_font_awesome) $this->addCss('/plugins/diveramkt/floatingbanner/assets/css/font-awesome.min.css');
 

@@ -86,7 +86,7 @@ tabs:
                     cor_fundo:
                         label: 'diveramkt.floatingbanner::lang.captaremail.color_fundo'
                         span: auto
-                        default: '#000000'
+                        default: '#ffffff'
                         type: colorpicker
                     cor_description:
                         label: 'Cor da descrição'

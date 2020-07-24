@@ -46,7 +46,13 @@
 
 	}
 
-	window.onload = function(){
+
+	$(document).ready(function(){
+		// if($('.input_label_float label').length > 0){
+		// 	$(document).on('click','.contFomFloating .input_label_float label',function(){
+		// 		this.closest('.input_label_float').querySelector('#'+this.getAttribute('for')).focus();
+		// 	});
+		// }
 
 		if(document.querySelectorAll('.input_label_float label').length > 0){
 			for (cur of document.querySelectorAll('.input_label_float label')) {
@@ -55,5 +61,15 @@
 				}
 			}
 		}
+	});
 
-	}
+
+	// window.onload = function(){
+		// if(document.querySelectorAll('.input_label_float label').length > 0){
+		// 	for (cur of document.querySelectorAll('.input_label_float label')) {
+		// 		cur.onclick = function(){
+		// 			this.closest('.input_label_float').querySelector('#'+this.getAttribute('for')).focus();
+		// 		}
+		// 	}
+		// }
+	// }

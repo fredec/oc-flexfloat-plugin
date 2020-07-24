@@ -86,6 +86,16 @@
 
 <script type="text/javascript">
 
+	// $(document).ready(function(){
+	// 	if($('.input_label_float label').length > 0){
+	// 		alert('teste 1');
+	// 		$('.contFomFloating .input_label_float label').click(function(){
+	// 			alert('teste');
+	// 			// this.closest('.input_label_float').querySelector('#'+this.getAttribute('for')).focus();
+	// 		})
+	// 	}
+	// });
+
 	var inputs_email_floating=document.querySelectorAll('#capturar_emails form input');
 
 	function email_cadastrado_floating(){
@@ -141,6 +151,14 @@
 		$('#bio_ep_close').html('<span>x</span>');
 
 		bioEp.domReady(function(){
+
+			if($('#bio_ep label').length){
+				$('#bio_ep label').each(function(){
+					$(this).closest('.input_label_float').find('input').attr('id','bio_ep_'+this.getAttribute('for'));
+					$(this).attr('for','bio_ep_'+$(this).attr('for'));
+				})
+			}
+
 			$('#bio_ep_close').click(function(){
 				$.request('onSessionBanner');
 
