@@ -4,11 +4,33 @@ fields:
         span: auto
         required: 1
         type: text
+    tipo_banner:
+        label: 'Tipo de banner'
+        options:
+            - Padrão
+            - 'Script incorporado'
+        showSearch: true
+        span: right
+        type: dropdown
+    script_embed:
+        label: 'Scripts incorporado'
+        size: small
+        span: right
+        trigger:
+            action: show
+            field: tipo_banner
+            condition: 'value[1]'
+        type: textarea
     image:
         label: 'diveramkt.floatingbanner::lang.popup.image'
         mode: image
-        span: auto
+        imageWidth: '300'
+        span: right
         required: 1
+        trigger:
+            action: show
+            field: tipo_banner
+            condition: 'value[0]'
         type: mediafinder
     data_entrada:
         label: 'Data de Entrada'
@@ -26,12 +48,25 @@ fields:
         label: 'diveramkt.floatingbanner::lang.popup.link'
         span: left
         type: text
+    tipo_link:
+        label: 'Tipo do link'
+        options:
+            padrao: Padrão
+            whatsapp: Whatsapp
+        showSearch: true
+        span: left
+        type: dropdown
     description:
         label: 'diveramkt.floatingbanner::lang.popup.description'
         size: ''
         span: left
         type: textarea
         comment: 'diveramkt.floatingbanner::lang.popup.description_comment'
+    tempo_inativo:
+        label: 'Tempo inativo para aparecer'
+        span: left
+        type: number
+        comment: 'Tempo em segundos com o usuário inativo para aparecer o banner'
     dias_oculto:
         label: 'Dias ocultos (após fechado)'
         span: left

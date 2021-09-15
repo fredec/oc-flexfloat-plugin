@@ -4,16 +4,16 @@
 
 <div id="bio_ep_bg"></div>
 <div id="bio_ep">
-	<div id="bio_ep_close">X</div>
+	<div id="bio_ep_close">x</div>
 	{% if exitpopup.link %} <a href="{{ exitpopup.link|prep_url }}" {{ exitpopup.link|target }} title="{{ exitpopup.title }}"> {% endif %}
 		<img src="{{ exitpopup.image|media }}" alt="{{ exitpopup.title }}"/>
 	{% if exitpopup.link %} </a> {% endif %}
 </div>
 
 <style type="text/css">
-#bio_ep_bg {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.3; z-index: 10001;}
-#bio_ep {display: none; position: fixed; width: 100px; height: 100px; font-family: 'Titillium Web', sans-serif; font-size: 16px; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); -webkit-transform: translateX(-50%) translateY(-50%); -ms-transform: translateX(-50%) translateY(-50%); background-color: #fff; box-shadow: 0px 1px 4px 0 rgba(0,0,0,0.5); z-index: 10002;}
-#bio_ep_close {position: absolute; left: 100%; margin: -8px 0 0 -12px; width: 20px; height: 20px; color: #fff; font-size: 12px; font-weight: bold; text-align: center; border-radius: 50%; background-color: #5c5c5c; cursor: pointer;}
+	#bio_ep_bg {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.3; z-index: 10001;}
+	#bio_ep {display: none; position: fixed; width: 100px; height: 100px; font-family: 'Titillium Web', sans-serif; font-size: 16px; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); -webkit-transform: translateX(-50%) translateY(-50%); -ms-transform: translateX(-50%) translateY(-50%); background-color: #fff; box-shadow: 0px 1px 4px 0 rgba(0,0,0,0.5); z-index: 10002;}
+	#bio_ep_close {position: absolute; left: 100%; margin: -8px 0 0 -12px; width: 20px; height: 20px; color: #fff; font-size: 12px; font-weight: bold; text-align: center; border-radius: 50%; background-color: #5c5c5c; cursor: pointer;}
 </style>
 
 
@@ -26,7 +26,7 @@
 {% if exitpopup.link %} {% set html_popexit=html_popexit~'</a>' %} {% endif %}
 
 <!-- Manual: http://beeker.io/exit-intent-popup-script-tutorial -->
-<script src="{{ url('/') }}/plugins/diveramkt/floatingbanner/assets/vendor/beeker.io-exitpopup/bioep.js"></script>
+<script src="{{ url('/') }}/plugins/diveramkt/floatingbanner/assets/vendor/beeker.io-exitpopup/bioep.js?v=0.0.2"></script>
 
 <script type="text/javascript">
 	if( navigator.userAgent.match(/Android/i)
@@ -60,26 +60,39 @@
 
 }
 
+// function resize_banner_exitfloat(){
+	// $('#bio_ep')
+// }
+
+$(document).ready(function(){
+	$('#bio_ep a').click(function(){
+		$('#bio_ep_close').trigger('click');
+	});
+});
 
 </script>
 
 <style type="text/css">
-#bio_ep{height: auto!important;max-width: 800px!important;width: auto!important;}
-#bio_ep a{float: left;width: 100%;}
-#bio_ep img{max-width: 100%;float: left;}
-#bio_ep_close{
-	font-family: 'open sans';
-	border: solid #ae7f00 2px;
-	color: #ae7f00!important;
-	background: white!important;
-	width: 25px!important;
-	height: 25px!important;
-	line-height: 21px;
-	overflow: hidden;
-	cursor: pointer;
-	/*font: normal normal normal 14px/1 FontAwesome;*/
-}
-/*#bio_ep_close:before{content: "\f00d";float: left;margin-top: 4px;margin-left: 6px;margin-bottom: 10px;}*/
+	/*#bio_ep{height: auto!important;max-width: 800px!important;width: auto!important;height: 80%;}*/
+	#bio_ep{
+		max-width: 800px!important;width: auto!important;height: auto;
+		/*max-height: 90%!important;*/
+		transform: translate(-50%, -50%)!important;
+	}
+	#bio_ep a{width: 100%;}
+	#bio_ep img{max-width: 100%;float: left;max-height: 100%;}
+	#bio_ep_close{
+		border: solid black 2px;
+		color: black!important;
+		background: white!important;
+		width: 34px!important;
+		height: 34px!important;
+		line-height: 26px;
+		overflow: hidden;
+		cursor: pointer;
+		font-size: 110%;
+	}
+	/*#bio_ep_close:before{content: "\f00d";float: left;margin-top: 4px;margin-left: 6px;margin-bottom: 10px;}*/
 </style>
 
 {% endput %}

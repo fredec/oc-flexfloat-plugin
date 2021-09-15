@@ -116,7 +116,7 @@ class CapturaEmailTel extends ComponentBase
 		$this->capturaemails = $this->getCapturaEmails();
 		if(!isset($this->capturaemails->id) or !$this->capturaemails->id) return;
 
-		if(isset($this->capturaemails->colors[0])) $this->capturaemails->colors=$this->capturaemails->colors[0];
+		// if(isset($this->capturaemails->colors[0])) $this->capturaemails->colors=$this->capturaemails->colors[0];
 
 		$name='popup_diveramkt_floating_captar_email_entrada';
 		if(isset($this->capturaemails->tipo) && $this->capturaemails->tipo == 'entrada'){
@@ -150,8 +150,8 @@ class CapturaEmailTel extends ComponentBase
 			
 		}
 
-		$this->addCss('/plugins/diveramkt/floatingbanner/assets/style.css?atualizado');
-		$this->addJs('/plugins/diveramkt/floatingbanner/assets/scripts.js?atualizado1');
+		$this->addCss('/plugins/diveramkt/floatingbanner/assets/style.css','0.0.0');
+		$this->addJs('/plugins/diveramkt/floatingbanner/assets/scripts.js','0.0.0');
 
 		if($this->capturaemails->load_font_awesome) $this->addCss('/plugins/diveramkt/floatingbanner/assets/css/font-awesome.min.css');
 

@@ -4,57 +4,90 @@
 	{% endif %} -->
 
 	{% if popup.title %}
-	<div id="floatpopup">
+	<div id="floatpopup" style="background: white;">
+		{% if popup.tipo_banner == 1 %}
+		{{popup.script_embed|raw}}
+		{% else %}
+
 		{% if popup.link and popup.link != '' %} <a href="{{ popup.link|prep_url }}" target="{{popup.target}}" title="{{ popup.title }}"> {% endif %}
 			<img src="{{ popup.image|media }}" alt="{{ popup.title }}"/>
 		{% if popup.link and popup.link != '' %} </a> {% endif %}
+
+		{% endif %}
 	</div>
 
 	<!-- Load Script -->
 	{% put scripts %}
 
 	<style>
-	#floatpopup {display: none;}
-	#floatpopup_wrapper{height: 100%;width: 100%;top: 0;left: 0;}
-	#floatpopup {display: none;height: 90%;max-width: 90%;}
-	#floatpopup .popup_close{
-		position: absolute;
-		right: -14px;
-		top: -14px;
-		border-radius: 100%;
-		height: auto;
-		width: auto;
-		padding: 4px 8px;
-		line-height: 19px;
-		background: white;
-		font-size: 125%;
-		font-weight: bold;
-		cursor: pointer;
-	}
-	#floatpopup_wrapper img{position: relative;max-height: 100%;max-width: 100%;}
-	.floatpopup a{float: left;}
-</style>
+		#floatpopup iframe{max-width: 100%;height: 100%!important;}
+		#floatpopup {display: none;background: white;}
+		#floatpopup_wrapper{height: 100%;width: 100%;top: 0;left: 0;}
+		#floatpopup {display: none;max-height: 90%;max-width: 90%;}
+		#floatpopup .popup_close{
+			position: absolute;
+			right: -14px;
+			top: -14px;
+			border-radius: 100%;
+			height: auto;
+			width: auto;
+			/*padding: 4px 8px;*/
+			line-height: 20px;
+			background: white;
+			font-size: 125%;
+			font-weight: bold;
+			cursor: pointer;
+			padding: 0;
+			width: 34px;
+			height: 34px;
+		}
+		#floatpopup_wrapper img{position: relative;max-height: 100%;max-width: 100%;}
+		.floatpopup a{float: left;}
+	</style>
 
-<!-- Manual: https://dev.vast.com/jquery-popup-overlay/ -->
-<script src="{{ url('/') }}/plugins/diveramkt/floatingbanner/assets/vendor/jquery-popup-overlay/jquery.popupoverlay.js"></script>
-<!-- Manual: https://github.com/js-cookie/js-cookie -->
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<!-- Manual: https://dev.vast.com/jquery-popup-overlay/ -->
+	<script src="{{ url('/') }}/plugins/diveramkt/floatingbanner/assets/vendor/jquery-popup-overlay/jquery.popupoverlay.js"></script>
+	<!-- Manual: https://github.com/js-cookie/js-cookie -->
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
+	<script type="text/javascript">
+		$(document).ready(function(){
 	    	// if (!Cookies.get('floatpopup')) {
 		        // Initialize the plugin
-		        $('#floatpopup').popup({
-		        	pagecontainer: '#wrapper',
-		        	autoopen: true,
-		        	escape: false,
-		        	closebutton: true,
-		        	transition: 'all 0.5s',
-		        	blur: false,
-		        	scrolllock: true,
+
+		        var time_open='{{popup.tempo_inativo}}', interval_set='', carregado=0;
+		        if(time_open == '') time_open=0;
+
+		        $("body").mousemove(function( event ) {
+		        	if(!carregado) jogar_interval();
 		        });
 
-		        Cookies.set('floatpopup', 'popup', { expires: 7 });
+		        function jogar_interval(){
+		        	clearInterval(interval_set);
+		        	if(!carregado){
+		        		interval_set=setTimeout(function(){
+		        			clearInterval(interval_set);
+		        			carregado=1;
+		        			$('#floatpopup').popup({
+		        				pagecontainer: '#wrapper',
+		        				autoopen: true,
+		        				escape: false,
+		        				closebutton: true,
+		        				transition: 'all 0.5s',
+		        				blur: false,
+		        				scrolllock: true,
+		        			});
+
+		        			$('#floatpopup a').click(function(){
+		        				$('#floatpopup button.popup_close').trigger('click');
+		        			});
+
+		        			Cookies.set('floatpopup', 'popup', { expires: 7 });
+		        		}, time_open*1000);
+		        	}
+		        }
+		        jogar_interval();
+
 			// }
 		});
 	</script>

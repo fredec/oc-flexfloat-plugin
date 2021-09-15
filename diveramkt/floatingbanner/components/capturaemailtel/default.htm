@@ -96,6 +96,12 @@
 	// 	}
 	// });
 
+	function removeModal(){
+		$.request('onSessionBanner');
+		$('#bio_ep_bg').remove();
+		$('#bio_ep').remove();
+	}
+
 	var inputs_email_floating=document.querySelectorAll('#capturar_emails form input');
 
 	function email_cadastrado_floating(){
@@ -115,6 +121,7 @@
 		{% else %}
 		bioEp.hidePopup();
 		{% endif %}
+		removeModal();
 	}
 
 	$(document).ready(function(){
@@ -132,7 +139,7 @@
 				blur: false,
 				scrolllock: true,
 				onclose: function() {
-					$.request('onSessionBanner');
+					removeModal();
 				}
 			});
 		// Cookies.set('floatpopup', 'popup', { expires: 7 });
@@ -160,7 +167,7 @@
 			}
 
 			$('#bio_ep_close').click(function(){
-				$.request('onSessionBanner');
+				removeModal();
 
 				// $.request('__SELF__::onSessionBanner', {
 					// 'update': {'cart-items': '.cart-item-wrapper'}

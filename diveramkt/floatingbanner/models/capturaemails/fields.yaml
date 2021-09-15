@@ -74,7 +74,8 @@ tabs:
             maxItems: '1'
             minItems: '1'
             span: full
-            type: repeater
+            # type: repeater
+            type: nestedform
             tab: Cores
             form:
                 fields:

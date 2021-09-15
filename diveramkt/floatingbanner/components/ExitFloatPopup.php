@@ -56,6 +56,8 @@ class ExitFloatPopup extends ComponentBase
 				Session::put($name, date('Y-m-d'));
 			}
 		}
+
+		// $this->exitpopup_session=0;
 	}
 
 	// protected function getExitPopup(){

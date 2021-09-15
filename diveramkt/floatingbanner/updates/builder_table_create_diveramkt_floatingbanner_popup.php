@@ -12,20 +12,20 @@ class BuilderTableCreateDiveramktFloatingbannerPopup extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('title', 255);
+            $table->string('title', 255)->nullable();
             $table->string('image', 255)->nullable();
             $table->string('link', 255)->nullable();
-            $table->boolean('enabled')->nullable();
+            $table->integer('enabled')->default(1);
             $table->text('description')->nullable();
         });
         
         // Insert some stuff
         DB::table('diveramkt_floatingbanner_popup')->insert(
-            array(
+            [
                 'id' => '1',
                 'title' => 'FloatingBanner',
-                'enabled' => false
-            )
+                'enabled' => 0
+            ]
         );
     }
     

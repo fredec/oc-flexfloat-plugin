@@ -129,13 +129,41 @@ class FloatPopup extends ComponentBase
 
 		if(isset($this->popup->attributes) && str_replace(' ','',$this->popup->attributes['link']) != ''){
 			$this->popup->attributes['target']='_parent';
+			
+			if(isset($this->popup->attributes['tipo_link']) && $this->popup->attributes['tipo_link'] == 'whatsapp'){
+				$this->popup->attributes['link']=$this->link_whats($this->popup->attributes['link']);
+			}
+
 			$url=$this->popup->attributes['link'];
 			if(!strpos("[".$url."]", "http://") && !strpos("[".$url."]", "https://")) $url='http://'.$url;
 			$this->popup->attributes['link']=$url;
 
 			if(!strpos("[".$this->popup->attributes['link']."]", $_SERVER['HTTP_HOST'])) $this->popup->attributes['target']='_blank';
+
 		}
 		
+	}
+
+
+	public function link_whats($tel, $msg=false){
+		if(isset($_SERVER['HTTP_USER_AGENT'])){
+			$iphone = strpos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+			$android = strpos($_SERVER['HTTP_USER_AGENT'],"Android");
+			$palmpre = strpos($_SERVER['HTTP_USER_AGENT'],"webOS");
+			$berry = strpos($_SERVER['HTTP_USER_AGENT'],"BlackBerry");
+			$ipod = strpos($_SERVER['HTTP_USER_AGENT'],"iPod");
+
+			$extra=''; if(!strpos("[".$tel."]", "+")) $extra='55';
+
+			if ($iphone || $android || $palmpre || $ipod || $berry == true) {
+				$link='https://api.whatsapp.com/send?phone='.$extra;
+			} else {
+				$link='https://web.whatsapp.com/send?phone='.$extra;
+			}
+			$link=$link.preg_replace("/[^0-9]/", "", $tel);
+			if($msg) $link.='&text='.$msg;
+			return $link;
+		}else return $tel;
 	}
 
 	// protected function getPopup(){
@@ -145,6 +173,7 @@ class FloatPopup extends ComponentBase
 		$retorno=Popup::where('data_entrada','<=',date('Y-m-d H:i:s'))->whereNull('data_saida')
 		->orWhere('data_entrada','<=',date('Y-m-d H:i:s'))->where('data_saida','0000-00-00')
 		->orWhere('data_entrada','<=',date('Y-m-d H:i:s'))->where('data_saida','>',date('Y-m-d H:i:s'))
+		->orderBy('data_entrada', 'desc')
 		->get();
 
 		if(isset($retorno[0])){

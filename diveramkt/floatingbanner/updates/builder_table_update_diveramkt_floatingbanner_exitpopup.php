@@ -10,6 +10,7 @@ class BuilderTableUpdateDiveramktFloatingbannerExitpopup extends Migration
         Schema::table('diveramkt_floatingbanner_exitpopup', function($table)
         {
             $table->increments('id')->unsigned(false)->change();
+            $table->string('title', 255)->nullable()->change();
             $table->string('image', 255)->nullable()->change();
             $table->string('link', 255)->nullable()->change();
             $table->boolean('enabled')->nullable()->change();
@@ -22,6 +23,7 @@ class BuilderTableUpdateDiveramktFloatingbannerExitpopup extends Migration
         Schema::table('diveramkt_floatingbanner_exitpopup', function($table)
         {
             $table->increments('id')->unsigned()->change();
+            $table->string('title', 255)->nullable(false)->change();
             $table->string('image', 255)->nullable(false)->change();
             $table->string('link', 255)->nullable(false)->change();
             $table->boolean('enabled')->nullable(false)->change();

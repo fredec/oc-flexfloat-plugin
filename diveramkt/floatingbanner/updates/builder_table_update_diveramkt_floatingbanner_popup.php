@@ -11,7 +11,7 @@ class BuilderTableUpdateDiveramktFloatingbannerPopup extends Migration
         {
             $table->dateTime('data_entrada')->nullable();
             $table->dateTime('data_saida')->nullable();
-            $table->integer('dias_oculto')->nullable();
+            $table->integer('dias_oculto')->default(1);
         });
     }
     
