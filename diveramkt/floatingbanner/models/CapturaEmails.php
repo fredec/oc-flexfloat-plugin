@@ -12,6 +12,9 @@ class CapturaEmails extends Model
 
     public $jsonable = ['colors'];
     // ,'margin'
+
+    public $implement = [];
+    public $translatable = ['title','description'];
     
     /*
      * Disable timestamps by default.

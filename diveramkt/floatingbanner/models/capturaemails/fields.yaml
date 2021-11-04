@@ -43,6 +43,7 @@ tabs:
             tab: 'diveramkt.floatingbanner::lang.plugin.textos'
         title:
             label: 'diveramkt.floatingbanner::lang.captaremail.title'
+            default: 'diveramkt.floatingbanner::lang.captaremail.default_title'
             span: full
             type: text
             tab: 'diveramkt.floatingbanner::lang.plugin.textos'

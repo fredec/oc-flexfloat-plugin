@@ -23,6 +23,16 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function boot(){
+        $class=get_declared_classes();
+        if(in_array('RainLab\Translate\Plugin', $class) || in_array('RainLab\Translate\Classes\Translator', $class)){
+            \Diveramkt\Floatingbanner\Models\CapturaEmails::extend(function($model) {
+                $model->implement[] = 'RainLab.Translate.Behaviors.TranslatableModel';
+                // $model->translatable = ['subtitle','description','btn_label','image','bc_image','image_mobile','links_extra'];
+            });
+        }
+    }
+
     private function getPhpFunctions()
     {
         return [
@@ -50,6 +60,15 @@ class Plugin extends PluginBase
         $filters = [];
         // add PHP functions
         $filters += $this->getPhpFunctions();
+
+        $class=get_declared_classes();
+        if(in_array('RainLab\Translate\Plugin', $class) || in_array('RainLab\Translate\Classes\Translator', $class)){
+            $filters+= [
+                '_'  => function($string=false){
+                    return $string;
+                },
+            ];
+        }
 
         return [
             'filters'   => $filters,

@@ -14,7 +14,7 @@
 			{% if popup.enabled_name %}
 			<div class="input_label_float center_label">
 				<input name="name" id="nome_popup_capturar_email" value="" required="required" type="text">
-				<label for="nome_popup_capturar_email">Informe seu nome</label>
+				<label for="nome_popup_capturar_email">{{'Informe seu nome'|_}}</label>
 			</div>
 			{% endif %}
 
@@ -22,18 +22,18 @@
 				{% if popup.select_campo == 'email' %}
 				<div class="input_label_float center_label">
 					<input name="email" id="email_popup_capturar_email" value="" required="required" type="text">
-					<label for="email_popup_capturar_email">Informe seu email</label>
+					<label for="email_popup_capturar_email">{{'Informe seu email'|_}}</label>
 				</div>
 				{% else %}
 				<div class="input_label_float center_label">
 					<input name="email" id="email_popup_capturar_telefone" value="" required="required" type="tel">
-					<label for="email_popup_capturar_telefone">Informe seu telefone/whatsapp</label>
+					<label for="email_popup_capturar_telefone">{{'Informe seu telefone/whatsapp'|_}}</label>
 				</div>
 				{% endif %}
 			</div>
 			<div class="{{not popup.enabled_name ?' no_name ':''}}">
 				<div class="div_input_loading_floating">
-					<button type="submit" style="{{popup.colors.cor_botoes?' background-color: '~popup.colors.cor_botoes~'!important':''}}">Cadastrar</button>
+					<button type="submit" style="{{popup.colors.cor_botoes?' background-color: '~popup.colors.cor_botoes~'!important':''}}">{{'Cadastrar'|_}}</button>
 					<span data-attach-loading class=""></span>
 				</div>
 			</div>

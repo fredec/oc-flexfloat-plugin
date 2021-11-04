@@ -36,6 +36,7 @@
         'tipo_entrada' => 'Ao entrar no site',
         'tipo_saida' => 'Ao sair do site',
         'title' => 'Título (Padrão: Cadastre seu e-mail)',
+        'default_title' => 'Cadastre seu e-mail',
         'color_fundo' => 'Cor de fundo',
         'image_fundo' => 'Imagem de fundo',
         'enabled_name' => 'Habilitar campo de nome',
