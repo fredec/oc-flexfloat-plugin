@@ -62,12 +62,26 @@ fields:
         span: left
         type: textarea
         comment: 'diveramkt.floatingbanner::lang.popup.description_comment'
-    tempo_inativo:
-        label: 'Tempo inativo para aparecer'
-        span: left
-        type: number
-        comment: 'Tempo em segundos com o usuário inativo para aparecer o banner'
-    dias_oculto:
-        label: 'Dias ocultos (após fechado)'
-        span: left
-        type: number
+tabs:
+    fields:
+        tempo_inativo:
+            label: 'Tempo inativo para aparecer'
+            span: auto
+            type: number
+            comment: 'Tempo em segundos com o usuário inativo para aparecer o banner'
+            tab: Configurações
+        dias_oculto:
+            label: 'Dias ocultos (após fechado)'
+            span: auto
+            type: number
+            tab: Configurações
+        pages:
+            label: 'Páginas que será visível'
+            nameFrom: url
+            descriptionFrom: description
+            span: full
+            # type: relation
+            type: partial
+            comment: 'Caso não tenha nenhuma página, será visível em todas.'
+            path: $/diveramkt/floatingbanner/controllers/_render_pages.htm
+            tab: Páginas

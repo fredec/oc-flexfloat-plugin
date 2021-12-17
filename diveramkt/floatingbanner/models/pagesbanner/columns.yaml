@@ -1,0 +1,8 @@
+columns:
+    url:
+        label: URL
+        type: text
+        searchable: true
+    enabled:
+        label: habilitado
+        type: switch

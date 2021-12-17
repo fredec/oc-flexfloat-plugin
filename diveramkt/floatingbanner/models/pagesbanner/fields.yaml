@@ -1,0 +1,32 @@
+fields:
+    enabled:
+        label: Habilitado
+        span: full
+        default: 1
+        type: switch
+    type_url:
+        label: 'Tipo de url'
+        options:
+            page: 'Páginas'
+            exact: 'url'
+        showSearch: true
+        span: auto
+        type: dropdown
+    url:
+        label: Url
+        span: left
+        comment: 'Ex: /contato'
+        trigger:
+            action: show
+            field: type_url
+            condition: 'value[exact]'
+        type: text
+    page_id:
+        label: Página
+        showSearch: true
+        span: left
+        trigger:
+            action: show
+            field: type_url
+            condition: 'value[page]'
+        type: dropdown

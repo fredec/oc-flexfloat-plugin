@@ -6,6 +6,7 @@ use stdclass;
 use Cms\Classes\ComponentBase;
 
 use Diveramkt\FloatingBanner\Models\Popup;
+use Diveramkt\FloatingBanner\Models\Pagesbanner;
 
 class FloatPopup extends ComponentBase
 {
@@ -169,11 +170,27 @@ class FloatPopup extends ComponentBase
 	// protected function getPopup(){
 	public function getPopup(){
 		// return Popup::first();
+		// $this->page->url
+		// echo $url;
+		$url=str_replace(url('/'), '', \Request::url('/')); $page=$this->page;
+		$Popup=new Popup(); $t=$Popup->table;
+		$Pagesbanner=new Pagesbanner(); $j=$Pagesbanner->table;
 
-		$retorno=Popup::where('data_entrada','<=',date('Y-m-d H:i:s'))->whereNull('data_saida')
-		->orWhere('data_entrada','<=',date('Y-m-d H:i:s'))->where('data_saida','0000-00-00')
-		->orWhere('data_entrada','<=',date('Y-m-d H:i:s'))->where('data_saida','>',date('Y-m-d H:i:s'))
-		->orderBy('data_entrada', 'desc')
+		// orWhere
+		$retorno=Popup::select($t.'.*','join.id as joinid')->where($t.'.data_entrada','<=',date('Y-m-d H:i:s'))
+		->where(function ($query) use ($t) {
+			$query->whereNull($t.'.data_saida')
+			->orWhere($t.'.data_entrada','<=',date('Y-m-d H:i:s'))->where($t.'.data_saida','0000-00-00')
+			->orWhere($t.'.data_entrada','<=',date('Y-m-d H:i:s'))->where($t.'.data_saida','>',date('Y-m-d H:i:s'));
+		})
+		->leftJoin($j.' as join', function ($join) use ($t) {
+			$join->on($t.'.id', '=', 'join.banner_id')
+			->where('join.type_banner', 'popup')->where('join.enabled', 1);
+		})
+		->whereNull('join.id')
+		->orWhere('join.id','>',0)->where('join.url',$url)->orWhere('join.page_id',$page->id)
+		->orderBy($t.'.data_entrada', 'desc')
+		->distinct()
 		->get();
 
 		if(isset($retorno[0])){

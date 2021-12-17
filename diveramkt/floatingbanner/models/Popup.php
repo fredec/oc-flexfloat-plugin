@@ -25,4 +25,13 @@ class Popup extends Model
      * @var string The database table used by the model.
      */
     public $table = 'diveramkt_floatingbanner_popup';
+
+    public $hasMany = [
+        'pages' => [
+            'Diveramkt\Floatingbanner\Models\Pagesbanner',
+            'key' => 'banner_id',
+            'scope' => 'popup'
+        ],
+    ];
+
 }

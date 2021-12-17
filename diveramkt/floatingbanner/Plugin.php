@@ -24,6 +24,7 @@ class Plugin extends PluginBase
     }
 
     public function boot(){
+
         $class=get_declared_classes();
         if(in_array('RainLab\Translate\Plugin', $class) || in_array('RainLab\Translate\Classes\Translator', $class)){
             \Diveramkt\Floatingbanner\Models\CapturaEmails::extend(function($model) {

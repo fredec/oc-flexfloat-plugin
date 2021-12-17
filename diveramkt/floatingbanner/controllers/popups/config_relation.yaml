@@ -1,0 +1,8 @@
+pages:
+    label: Páginas
+    manage:
+        form: $/diveramkt/floatingbanner/models/pagesbanner/fields.yaml
+        list: $/diveramkt/floatingbanner/models/pagesbanner/columns.yaml
+    view:
+        list: $/diveramkt/floatingbanner/models/pagesbanner/columns.yaml
+        toolbarButtons: create|delete
