@@ -169,9 +169,6 @@ class FloatPopup extends ComponentBase
 
 	// protected function getPopup(){
 	public function getPopup(){
-		// return Popup::first();
-		// $this->page->url
-		// echo $url;
 		$url=str_replace(url('/'), '', \Request::url('/')); $page=$this->page;
 		$Popup=new Popup(); $t=$Popup->table;
 		$Pagesbanner=new Pagesbanner(); $j=$Pagesbanner->table;
@@ -187,8 +184,10 @@ class FloatPopup extends ComponentBase
 			$join->on($t.'.id', '=', 'join.banner_id')
 			->where('join.type_banner', 'popup')->where('join.enabled', 1);
 		})
-		->whereNull('join.id')
-		->orWhere('join.id','>',0)->where('join.url',$url)->orWhere('join.page_id',$page->id)
+		->where(function ($query) use ($url, $page) {
+			$query->whereNull('join.id')
+			->orWhere('join.id','>',0)->where('join.url',$url)->orWhere('join.page_id',$page->id);
+		})
 		->orderBy($t.'.data_entrada', 'desc')
 		->distinct()
 		->get();

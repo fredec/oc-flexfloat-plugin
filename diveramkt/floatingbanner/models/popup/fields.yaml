@@ -76,12 +76,17 @@ tabs:
             type: number
             tab: Configurações
         pages:
-            label: 'Páginas que será visível'
-            nameFrom: url
-            descriptionFrom: description
             span: full
-            # type: relation
-            type: partial
-            comment: 'Caso não tenha nenhuma página, será visível em todas.'
             path: $/diveramkt/floatingbanner/controllers/_render_pages.htm
+            context:
+                - update
+                - preview
+            type: partial
+            tab: Páginas
+        section_pages:
+            span: full
+            label: 'Para selecionar as páginas, necessário cadastrar o banner primeiro'
+            context:
+                - create
+            type: section
             tab: Páginas

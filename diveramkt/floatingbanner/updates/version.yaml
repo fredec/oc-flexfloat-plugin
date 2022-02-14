@@ -21,3 +21,6 @@
 1.0.8:
     - 'Created table diveramkt_floatingbanner_pages_banner'
     - builder_table_create_diveramkt_floatingbanner_pages_banner.php
+1.0.9:
+    - 'Updated table diveramkt_floatingbanner_popup'
+    - builder_table_update_diveramkt_floatingbanner_popup_3.php

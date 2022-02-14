@@ -1,10 +1,11 @@
 name: Popups
 modelClass: Diveramkt\Floatingbanner\Models\Popup
 form: $/diveramkt/floatingbanner/models/popup/fields.yaml
-defaultRedirect: 'diveramkt/floatingbanner/popups/update/:id'
+defaultRedirect: 'diveramkt/floatingbanner/popups'
 create:
-    redirect: diveramkt/floatingbanner/popups/update/1
-    redirectClose: diveramkt/floatingbanner/popups/update/1
+    redirect: 'diveramkt/floatingbanner/popups/update/:id'
+    redirectClose: 'diveramkt/floatingbanner/popups/update/:id'
 update:
-    redirect: diveramkt/floatingbanner/popups/update/1
-    redirectClose: diveramkt/floatingbanner/popups/update/1
+    redirect: 'diveramkt/floatingbanner/popups'
+    redirectClose: 'diveramkt/floatingbanner/popups'
+preview: {  }
