@@ -18,19 +18,6 @@ class BuilderTableCreateDiveramktFloatingbannerExitpopup extends Migration
             $table->boolean('enabled')->default(1);
             $table->text('description');
         });
-        
-        
-        // Insert some stuff
-        DB::table('diveramkt_floatingbanner_exitpopup')->insert(
-            [
-                'id' => '1',
-                'title' => 'ExitBanner',
-                'enabled' => 0,
-                'image' => '',
-                'link' => '',
-                'description' => '',
-            ]
-        );
     }
     
     public function down()
