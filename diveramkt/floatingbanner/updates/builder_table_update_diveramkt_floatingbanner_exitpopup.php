@@ -18,7 +18,7 @@ class BuilderTableUpdateDiveramktFloatingbannerExitpopup extends Migration
         });
 
         // Insert some stuff
-        DB::table('diveramkt_floatingbanner_exitpopup')->insert(
+        \DB::table('diveramkt_floatingbanner_exitpopup')->insert(
             [
                 'id' => '1',
                 'title' => 'ExitBanner',
