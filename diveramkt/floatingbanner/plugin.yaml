@@ -38,3 +38,5 @@ navigation:
                 label: 'diveramkt.floatingbanner::lang.captaremail.popcaptura'
                 url: diveramkt/floatingbanner/capturaemails/update/1
                 icon: icon-envelope-square
+                permissions:
+                    - manage_popcaptura
