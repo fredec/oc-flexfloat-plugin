@@ -6,7 +6,7 @@
 <div id="bio_ep">
 	<div id="bio_ep_close">x</div>
 	{% if exitpopup.link %} <a href="{{ exitpopup.link|prep_url }}" {{ exitpopup.link|target }} title="{{ exitpopup.title }}"> {% endif %}
-		<img src="{{ exitpopup.image|media }}" alt="{{ exitpopup.title }}"/>
+		<img src="{{ url(exitpopup.image|media) }}" alt="{{ exitpopup.title }}"/>
 	{% if exitpopup.link %} </a> {% endif %}
 </div>
 
