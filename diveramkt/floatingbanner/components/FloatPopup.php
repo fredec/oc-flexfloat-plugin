@@ -185,8 +185,9 @@ class FloatPopup extends ComponentBase
 			->where('join.type_banner', 'popup')->where('join.enabled', 1);
 		})
 		->where(function ($query) use ($url, $page) {
-			$query->whereNull('join.id')
-			->orWhere('join.id','>',0)->where('join.url',$url)->orWhere('join.page_id',$page->id);
+			$query=$query->whereNull('join.id')
+			->orWhere('join.id','>',0)->where('join.url',$url);
+			if(isset($page->id)) $query->orWhere('join.page_id',$page->id);
 		})
 		->orderBy($t.'.data_entrada', 'desc')
 		->distinct()
