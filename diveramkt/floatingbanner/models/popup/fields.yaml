@@ -25,13 +25,27 @@ fields:
         label: 'diveramkt.floatingbanner::lang.popup.image'
         mode: image
         imageWidth: '300'
-        span: right
+        span: left
         required: 1
         trigger:
             action: show
             field: tipo_banner
             condition: 'value[0]'
         type: mediafinder
+    image_mobile:
+        label: 'diveramkt.floatingbanner::lang.popup.image_mobile'
+        mode: image
+        imageWidth: '300'
+        span: right
+        trigger:
+            action: show
+            field: tipo_banner
+            condition: 'value[0]'
+        type: mediafinder
+    section_dates:
+        label: 'diveramkt.floatingbanner::lang.popup.dates'
+        span: full
+        type: section
     data_entrada:
         label: 'Data de Entrada'
         mode: datetime
@@ -41,40 +55,43 @@ fields:
     data_saida:
         label: 'Data de Saída'
         mode: datetime
-        span: left
+        span: right
         type: datepicker
         ignoreTimezone: true
-    link:
-        label: 'diveramkt.floatingbanner::lang.popup.link'
-        span: left
-        type: text
-    tipo_link:
-        label: 'Tipo do link'
-        options:
-            padrao: Padrão
-            whatsapp: Whatsapp
-        showSearch: true
-        span: left
-        type: dropdown
-    description:
-        label: 'diveramkt.floatingbanner::lang.popup.description'
-        size: ''
-        span: left
-        type: textarea
-        comment: 'diveramkt.floatingbanner::lang.popup.description_comment'
 tabs:
     fields:
+        tipo_link:
+            label: 'Tipo do link'
+            options:
+                padrao: Padrão
+                whatsapp: Whatsapp
+            showSearch: true
+            span: left
+            type: dropdown
+            tab: 'diveramkt.floatingbanner::lang.popup.settings'
+        link:
+            label: 'diveramkt.floatingbanner::lang.popup.link'
+            span: right
+            type: text
+            tab: 'diveramkt.floatingbanner::lang.popup.settings'
+        description:
+            label: 'diveramkt.floatingbanner::lang.popup.description'
+            size: ''
+            span: full
+            type: textarea
+            comment: 'diveramkt.floatingbanner::lang.popup.description_comment'
+            tab: 'diveramkt.floatingbanner::lang.popup.settings'
         tempo_inativo:
             label: 'Tempo inativo para aparecer'
             span: auto
             type: number
             comment: 'Tempo em segundos com o usuário inativo para aparecer o banner'
-            tab: Configurações
+            tab: 'diveramkt.floatingbanner::lang.popup.settings'
         dias_oculto:
             label: 'Dias ocultos (após fechado)'
             span: auto
             type: number
-            tab: Configurações
+            tab: 'diveramkt.floatingbanner::lang.popup.settings'
         pages:
             span: full
             path: $/diveramkt/floatingbanner/controllers/_render_pages.htm
@@ -82,11 +99,11 @@ tabs:
                 - update
                 - preview
             type: partial
-            tab: Páginas
+            tab: 'diveramkt.floatingbanner::lang.popup.pages'
         section_pages:
             span: full
             label: 'Para selecionar as páginas, necessário cadastrar o banner primeiro'
             context:
                 - create
             type: section
-            tab: Páginas
+            tab: 'diveramkt.floatingbanner::lang.popup.pages'

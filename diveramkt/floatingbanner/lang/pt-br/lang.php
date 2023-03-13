@@ -16,6 +16,10 @@
         'description' => 'Descrição',
         'description_comment' => 'Apenas para observação.',
         'image' => 'Imagem',
+        'image_mobile' => 'Imagem no mobile',
+        'dates' => 'Datas',
+        'settings' => 'Configurações',
+        'pages' => 'Páginas',
     ],
     'floatingbanner' => [
         'manager_popup' => 'Gerenciar Popup',

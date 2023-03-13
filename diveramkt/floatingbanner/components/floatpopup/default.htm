@@ -10,7 +10,11 @@
 		{% else %}
 
 		{% if popup.link and popup.link != '' %} <a href="{{ popup.link|prep_url }}" target="{{popup.target}}" title="{{ popup.title }}"> {% endif %}
-			<img src="{{ url(popup.image|media) }}" alt="{{ popup.title }}"/>
+			{% if popup.image_mobile %}
+			<img src="{{ url(popup.image|media) }}" srcset="{{url(popup.image_mobile|media)}} 767w, {{url(popup.image|media)}} 1500w" loading="lazy" alt="{{ popup.title }}"/>
+			{% else %}
+			<img src="{{ url(popup.image|media) }}" loading="lazy" alt="{{ popup.title }}"/>
+			{% endif %}
 		{% if popup.link and popup.link != '' %} </a> {% endif %}
 
 		{% endif %}
@@ -55,38 +59,38 @@
 	    	// if (!Cookies.get('floatpopup')) {
 		        // Initialize the plugin
 
-		        var time_open='{{popup.tempo_inativo}}', interval_set='', carregado=0;
-		        if(time_open == '') time_open=0;
+			var time_open='{{popup.tempo_inativo}}', interval_set='', carregado=0;
+			if(time_open == '') time_open=0;
 
-		        $("body").mousemove(function( event ) {
-		        	if(!carregado) jogar_interval();
-		        });
+			$("body").mousemove(function( event ) {
+				if(!carregado) jogar_interval();
+			});
 
-		        function jogar_interval(){
-		        	clearInterval(interval_set);
-		        	if(!carregado){
-		        		interval_set=setTimeout(function(){
-		        			clearInterval(interval_set);
-		        			carregado=1;
-		        			$('#floatpopup').popup({
-		        				pagecontainer: '#wrapper',
-		        				autoopen: true,
-		        				escape: false,
-		        				closebutton: true,
-		        				transition: 'all 0.5s',
-		        				blur: false,
-		        				scrolllock: true,
-		        			});
+			function jogar_interval(){
+				clearInterval(interval_set);
+				if(!carregado){
+					interval_set=setTimeout(function(){
+						clearInterval(interval_set);
+						carregado=1;
+						$('#floatpopup').popup({
+							pagecontainer: '#wrapper',
+							autoopen: true,
+							escape: false,
+							closebutton: true,
+							transition: 'all 0.5s',
+							blur: false,
+							scrolllock: true,
+						});
 
-		        			$('#floatpopup a').click(function(){
-		        				$('#floatpopup button.popup_close').trigger('click');
-		        			});
+						$('#floatpopup a').click(function(){
+							$('#floatpopup button.popup_close').trigger('click');
+						});
 
-		        			Cookies.set('floatpopup', 'popup', { expires: 7 });
-		        		}, time_open*1000);
-		        	}
-		        }
-		        jogar_interval();
+						Cookies.set('floatpopup', 'popup', { expires: 7 });
+					}, time_open*1000);
+				}
+			}
+			jogar_interval();
 
 			// }
 		});
