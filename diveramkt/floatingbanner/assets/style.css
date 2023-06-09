@@ -111,6 +111,10 @@
 
 #capturar_emails_wrapper img{position: relative;max-height: 100%;max-width: 100%;}
 .floatpopup a{float: left;}
+#floatpopup .modal_video{
+	height: 90%; max-width: 100%;
+}
+#floatpopup .modal_video video{max-height: 100%;position: relative;}
 
 .contFomFloating form{margin-top: -10px;}
 .contFomFloating form > *{margin-top: 10px;float: left;width: 100%;}

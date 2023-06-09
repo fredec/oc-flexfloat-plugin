@@ -9,6 +9,8 @@ fields:
         options:
             - Padrão
             - 'Script incorporado'
+            - 'Arquivo de vídeo'
+            - 'Link do youtube'
         showSearch: true
         span: right
         type: dropdown
@@ -42,6 +44,25 @@ fields:
             field: tipo_banner
             condition: 'value[0]'
         type: mediafinder
+    movie:
+        label: 'Arquivo de vídeo'
+        mode: file
+        span: full
+        trigger:
+            action: show
+            field: tipo_banner
+            condition: 'value[2]'
+        type: mediafinder
+        comment: 'Tipos de arquivos: mp4/webm'
+    link_youtube:
+        label: 'Link do youtube'
+        size: tiny
+        span: full
+        trigger:
+            action: show
+            field: tipo_banner
+            condition: 'value[3]'
+        type: textarea
     section_dates:
         label: 'diveramkt.floatingbanner::lang.popup.dates'
         span: full
