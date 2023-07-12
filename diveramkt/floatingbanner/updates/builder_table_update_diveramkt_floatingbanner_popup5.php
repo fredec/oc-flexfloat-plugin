@@ -12,7 +12,6 @@ class BuilderTableUpdateDiveramktFloatingbannerPopup5 extends Migration
             $table->text('link_youtube')->nullable();
             $table->text('infos')->nullable();
             $table->string('movie', 255)->nullable();
-            $table->text('infos')->nullable();
             $table->integer('enabled')->default(1)->change();
             $table->integer('dias_oculto')->default(0)->change();
         });
