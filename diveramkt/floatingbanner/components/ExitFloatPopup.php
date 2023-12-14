@@ -44,10 +44,16 @@ class ExitFloatPopup extends ComponentBase
 			$this->exitpopup->attributes=$valores;
 		}
 
-		$name='popup_diveramkt_exit_float_popup';
 		$this->exitpopup_session=1;
+		$name='popup_diveramkt_exit_float_popup_'.$this->alias;
+		if(!Session::has($name)) $this->exitpopup_session=0;
+
+		// $this->exitpopup_session=0;
+	}
+
+	public function onCreateSession(){
+		$name='popup_diveramkt_exit_float_popup_'.$this->alias;
 		if(!Session::has($name)) {
-			// Session::put($name, date('Y-m-d H:i:s'));
 			Session::put($name, date('Y-m-d'));
 			$this->exitpopup_session=0;
 		}else{
@@ -56,8 +62,6 @@ class ExitFloatPopup extends ComponentBase
 				Session::put($name, date('Y-m-d'));
 			}
 		}
-
-		// $this->exitpopup_session=0;
 	}
 
 	// protected function getExitPopup(){

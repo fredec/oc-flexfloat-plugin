@@ -68,6 +68,7 @@ $(document).ready(function(){
 	$('#bio_ep a').click(function(){
 		$('#bio_ep_close').trigger('click');
 	});
+	$.request('{{__SELF__}}::onCreateSession', {});
 });
 
 </script>
